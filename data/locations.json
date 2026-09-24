@@ -1,208 +1,503 @@
 [
   {
-    "name": "A-Type Round 4",
-    "category": ["A-Type"],
+    "name": "Gabrielle - Autumn Fairy Home 230 120 2 - Explorer",
+    "category": ["bird"],
     "requires": []
   },
   {
-    "name": "A-Type Round 9",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:1|"
-  },
-  {
-    "name": "A-Type Round 14",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:2|"
-  },
-  {
-    "name": "A-Type Round 19",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:3|"
-  },
-  {
-    "name": "A-Type Round 24",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:4|"
-  },
-  {
-    "name": "A-Type Round 29",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:5|"
-  },
-  {
-    "name": "A-Type Round 34",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:6|"
-  },
-  {
-    "name": "A-Type Round 39",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:7|"
-  },
-  {
-    "name": "A-Type Round 44",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:8|"
-  },
-  {
-    "name": "A-Type Round 49",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:9|"
-  },
-  {
-    "name": "A-Type Round 54",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:10|"
-  },
-  {
-    "name": "A-Type Round 59",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:11|"
-  },
-  {
-    "name": "A-Type Round 64",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:12|"
-  },
-  {
-    "name": "A-Type Round 69",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:13|"
-  },
-  {
-    "name": "A-Type Round 74",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:14|"
-  },
-  {
-    "name": "A-Type Round 79",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:15|"
-  },
-  {
-    "name": "A-Type Round 84",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:16|"
-  },
-  {
-    "name": "A-Type Round 89",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:17|"
-  },
-  {
-    "name": "A-Type Round 94",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:18|"
-  },
-  {
-    "name": "A-Type Round 99",
-    "category": ["A-Type"],
-    "requires": "|@A-Type:19|"
-  },
-  {
-    "name": "B-Type Round 4",
-    "category": ["B-Type"],
+    "name": "Torrie - Autumn Fairy Home 200 -8 2 - Explorer",
+    "category": ["bird"],
     "requires": []
   },
   {
-    "name": "B-Type Round 9",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:1|"
+    "name": "Summer - Autumn Fairy Home 100 10 5 - Explorer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 14",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:2|"
+    "name": "Autumn - Autumn Fairy Home 130 -40 5 - Explorer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 19",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:3|"
+    "name": "Grace - Autumn Fairy Home 38 16 5 - Spooker",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 24",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:4|"
+    "name": "Irene - Market Mesa 260 18 7 - Choir Director",
+    "category": ["bird"],
+    "requires": "|@Fairies:12|"
   },
   {
-    "name": "B-Type Round 29",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:5|"
+    "name": "Grayson - Market Mesa 255 50 5 - Apprehender",
+    "category": ["bird"],
+    "requires": "|@Fairies:12|"
   },
   {
-    "name": "B-Type Round 34",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:6|"
+    "name": "Lauren - Market Mesa 78 42 9 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:12|"
   },
   {
-    "name": "B-Type Round 39",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:7|"
+    "name": "Liz - Market Mesa 190 -50 9 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:12|"
   },
   {
-    "name": "B-Type Round 44",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:8|"
+    "name": "Alice - Market Mesa 210 18 16 - Slayer",
+    "category": ["bird"],
+    "requires": "|@Fairies:12|"
   },
   {
-    "name": "B-Type Round 49",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:9|"
+    "name": "Marta - Market Mesa 242 134 3 - Thurifer",
+    "category": ["bird"],
+    "requires": "|@Fairies:12|"
   },
   {
-    "name": "B-Type Round 54",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:10|"
+    "name": "Ali - Lava Prairie 90 50 0 - Hole Plugger",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 59",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:11|"
+    "name": "Michelle - Lava Prairie 150 -95 5 - Explorer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 64",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:12|"
+    "name": "Melissa - Lava Prairie 270 16 3 - Explorer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 69",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:13|"
+    "name": "Suzan - Lava Prairie 120 105 0 - Explorer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 74",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:14|"
+    "name": "Cassandra - Lava Prairie 195 145 0 - Landscaper",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 79",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:15|"
+    "name": "Rhonda - Lava Prairie 190 95 5 - Slayer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 84",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:16|"
+    "name": "Rachel - Mermaid Coast 180 -22 0 - Wingman",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 89",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:17|"
+    "name": "Amy - Mermaid Coast 206 172 0 - Explorer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 94",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:18|"
+    "name": "Nadia - Mermaid Coast 280 8 0 - Explorer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "B-Type Round 99",
-    "category": ["B-Type"],
-    "requires": "|@B-Type:19|"
+    "name": "Kathy - Mermaid Coast 170 -110 0 - Explorer",
+    "category": ["bird"],
+    "requires": []
   },
   {
-    "name": "Out of the Woods",
+    "name": "Anna - Mermaid Coast 280 42 4 - Slayer",
+    "category": ["bird"],
+    "requires": []
+  },
+  {
+    "name": "Christine - Mermaid Coast 232 76 0 - Castle Crasher",
+    "category": ["bird"],
+    "requires": []
+  },
+  {
+    "name": "Sam - Stone Age Speedway - Normal",
+    "category": ["bird"],
+    "requires": "|@Fairies:14|"
+  },
+  {
+    "name": "Peaseblossom - Stone Age Speedway - Hard",
+    "category": ["bird"],
+    "requires": "|@Fairies:14|"
+  },
+  {
+    "name": "Angela - Ant Farm",
+    "category": ["bird"],
+    "requires": []
+  },
+  {
+    "name": "Fiona - Winter Fairy Home 104 80 4 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Christy - Winter Fairy Home 228 118 2 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Sung - Winter Fairy Home 250 -20 4 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Britney - Winter Fairy Home 208 52 4 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Cindy - Winter Fairy Home 278 74 1 - Space Heater",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Coco - Hummingbird Fort 296 18 1 - Liberator",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Julie - Hummingbird Fort 144 4 6 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Marissa - Hummingbird Fort 164 -46 5 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Samantha - Hummingbird Fort 46 38 1 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Candace - Hummingbird Fort 246 94 4 - Slayer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Kiki - Hummingbird Fort 296 62 1 - Tinderer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Doodle - Panda Gardens 202 84 4 - I'm sorry, your name is DOODLE?",
+    "category": ["bird"],
+    "requires": "|@Fairies:30|"
+  },
+  {
+    "name": "Oi - Panda Gardens 136 118 3 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:30|"
+  },
+  {
+    "name": "Natalie - Panda Gardens 202 -54 6 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:30|"
+  },
+  {
+    "name": "Jennie - Panda Gardens 154 -6 0 - Apprehender",
+    "category": ["bird"],
+    "requires": "|@Fairies:30|"
+  },
+  {
+    "name": "Steffi - Panda Gardens 306 30 0 - Slayer",
+    "category": ["bird"],
+    "requires": "|@Fairies:30|"
+  },
+  {
+    "name": "Charlotte - Panda Gardens 176 120 3 - Tomyoer",
+    "category": ["bird"],
+    "requires": "|@Fairies:30|"
+  },
+  {
+    "name": "Kristen - Honey Marsh 144 -18 0 - Beekeeper",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Yaya - Honey Marsh 158 -106 4 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Chu Chu - Honey Marsh 142 58 4 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Letty - Honey Marsh 338 44 0 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Karen - Honey Marsh 160 106 4 - Slayer",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Rhiannon - Honey Marsh 232 96 4 - Honey Centrifuger",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Liora - Ice Age Speedway - Normal",
+    "category": ["bird"],
+    "requires": "|@Fairies:35|"
+  },
+  {
+    "name": "Naomi - Ice Age Speedway - Hard",
+    "category": ["bird"],
+    "requires": "|@Fairies:35|"
+  },
+  {
+    "name": "Jody - Wasp City",
+    "category": ["bird"],
+    "requires": "|@Fairies:20|"
+  },
+  {
+    "name": "Lisa - Grendor First Encounter",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Merriweather - Spring Fairy Home 200 -54 10 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Judy - Spring Fairy Home 274 4 6 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Heidi - Spring Fairy Home 250 116 2 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Tessa - Spring Fairy Home 124 -6 9 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Cassie - Spring Fairy Home 238 130 2 - Gardener",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Gladys - Time Machine Lab 184 -88 0 - Sporker",
+    "category": ["bird"],
+    "requires": "|@Fairies:58|"
+  },
+  {
+    "name": "Deborah - Time Machine Lab 140 -80 4 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:58|"
+  },
+  {
+    "name": "Cookie - Time Machine Lab 70 38 6 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:58|"
+  },
+  {
+    "name": "Maggie - Time Machine Lab 266 16 6 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:58|"
+  },
+  {
+    "name": "Xiang - Time Machine Lab 330 40 0 - Slayer",
+    "category": ["bird"],
+    "requires": "|@Fairies:58|"
+  },
+  {
+    "name": "Hollie - Time Machine Lab 98 -50 5 - Pencil Pusher",
+    "category": ["bird"],
+    "requires": "|@Fairies:58|"
+  },
+  {
+    "name": "Sarah - Roman City 214 98 0 - Pot Popper",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Kim - Roman City 150 -20 0 - Apprehender",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Jessie - Roman City 220 -40 3 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Nina - Roman City 32 10 3 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Doty - Roman City 170 144 3 - Slayer",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Laramie - Roman City 50 4 0 - Brazier Lighter",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Elizabeth - Twilight Bulb Factory 38 8 2 - Visionary",
+    "category": ["bird"],
+    "requires": "|@Fairies:50|"
+  },
+  {
+    "name": "Blue - Twilight Bulb Factory 130 2 3 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:50|"
+  },
+  {
+    "name": "Sylvia - Twilight Bulb Factory 254 138 0 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:50|"
+  },
+  {
+    "name": "Sugarplum - Twilight Bulb Factory 156 -106 2 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:50|"
+  },
+  {
+    "name": "Callie - Twilight Bulb Factory 76 -38 3 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:50|"
+  },
+  {
+    "name": "Mab - Twilight Bulb Factory 194 -18 0 - Propeller",
+    "category": ["bird"],
+    "requires": "|@Fairies:50|"
+  },
+  {
+    "name": "Jo - Aqua Age Speedway - Normal",
+    "category": ["bird"],
+    "requires": "|@Fairies:64|"
+  },
+  {
+    "name": "Betty - Aqua Age Speedway - Hard",
+    "category": ["bird"],
+    "requires": "|@Fairies:64|"
+  },
+  {
+    "name": "Roxie - Caterpillar Gardens",
+    "category": ["bird"],
+    "requires": "|@Fairies:44|"
+  },
+  {
+    "name": "Glinda - Summer Fairy Home 70 56 9 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Penny - Summer Fairy Home 184 12 1 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Merritt - Summer Fairy Home 306 16 1 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Chi Chi - Summer Fairy Home 182 -92 7 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Mellie - Summer Fairy Home 116 -38 9 - Mushroom Knife",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Alex - Dusty Trails 136 94 5 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:75|"
+  },
+  {
+    "name": "Sandra - Dusty Trails 195 -46 4 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:75|"
+  },
+  {
+    "name": "Flavie - Dusty Trails 250 22 5 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:75|"
+  },
+  {
+    "name": "Carrie - Dusty Trails 260 68 0 - Apprehender",
+    "category": ["bird"],
+    "requires": "|@Fairies:75|"
+  },
+  {
+    "name": "Mariah - Dusty Trails 310 28 0 - Slayer",
+    "category": ["bird"],
+    "requires": "|@Fairies:75|"
+  },
+  {
+    "name": "Eileen - Dusty Trails 64 -32 2 - Midnight Oiler",
+    "category": ["bird"],
+    "requires": "|@Fairies:75|"
+  },
+  {
+    "name": "Tammy - Star Park 202 90 0 - Ground Controller",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Ember - Star Park 70 -52 0 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Gwen - Star Park 94 26 2 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Meg - Star Park 118 -82 2 - Explorer",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Beaney - Star Park 266 90 1 - Slayer",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Agent 10 - Star Park 142 132 0 - Monster",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Mustardseed - Space Age Speedway - Normal",
+    "category": ["bird"],
+    "requires": "|@Fairies:80|"
+  },
+  {
+    "name": "Micki - Space Age Speedway - Hard",
+    "category": ["bird"],
+    "requires": "|@Fairies:80|"
+  },
+  {
+    "name": "Franny - Beetle Burrows",
+    "category": ["bird"],
+    "requires": "|@Fairies:71|"
+  },
+  {
+    "name": "Zoe - Grendor Strikes Back - Goal",
     "victory": true,
-    "category": ["Goal"],
-    "requires": "|@A-Type:19| AND |@B-Type:19|"
+    "category": ["bird"],
+    "requires": "|@Fairies:99|"
   }
 ]

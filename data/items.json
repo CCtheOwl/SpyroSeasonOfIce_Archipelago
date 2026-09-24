@@ -1,4 +1,26 @@
 [
-  {"name": "Progressive A-Type Round", "category": ["A-Type"], "count": 19, "progression": true},
-  {"name": "Progressive B-Type Round", "category": ["B-Type"], "count": 19, "progression": true}
+  {"name": "Progressive Autumn Fairy Home Fairy", "category": ["Fairies"], "count": 5, "progression": true},
+  {"name": "Progressive Market Mesa Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Lava Prairie Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Mermaid Coast Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Stone Age Speedway Fairy", "category": ["Fairies"], "count": 2, "progression": true},
+  {"name": "Ant Farm Fairy", "category": ["Fairies"], "count": 1, "progression": true},
+  {"name": "Progressive Winter Fairy Home Fairy", "category": ["Fairies"], "count": 5, "progression": true},
+  {"name": "Progressive Hummingbird Fort Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Panda Gardens Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Honey Marsh Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Ice Age Speedway Fairy", "category": ["Fairies"], "count": 2, "progression": true},
+  {"name": "Wasp City Fairy", "category": ["Fairies"], "count": 1, "progression": true},
+  {"name": "Progressive Spring Fairy Home Fairy", "category": ["Fairies"], "count": 5, "progression": true},
+  {"name": "Progressive Time Machine Lab Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Roman City Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Twilight Bulb Factory Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Aqua Age Speedway Fairy", "category": ["Fairies"], "count": 2, "progression": true},
+  {"name": "Caterpillar Gardens Fairy", "category": ["Fairies"], "count": 1, "progression": true},
+  {"name": "Progressive Summer Fairy Home Fairy", "category": ["Fairies"], "count": 5, "progression": true},
+  {"name": "Progressive Dusty Trails Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Star Park Fairy", "category": ["Fairies"], "count": 6, "progression": true},
+  {"name": "Progressive Space Age Speedway Fairy", "category": ["Fairies"], "count": 2, "progression": true},
+  {"name": "Beetle Burrows Fairy", "category": ["Fairies"], "count": 1, "progression": true},
+  {"name": "Grendor's Lair Fairy", "category": ["	Fairies"], "count": 1, "progression": true}
 ]
