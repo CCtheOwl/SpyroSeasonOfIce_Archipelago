@@ -10,7 +10,7 @@
 #Happy to answer any questions! Ask them in the game's topic post within the official Archipelago Discord server. 
 #Enjoy!
 
-#CCtheOwl 9/12/2026
+#CCtheOwl 9/27/2026
 
 
 from base64 import b64encode
@@ -57,22 +57,22 @@ from .hooks.Data import hook_interpret_slot_data
 
 
 #Bare-bones patching that just allows the player to keep their vanilla dump's SaveRAM untouched.
-class WariosWoodsPatch(APProcedurePatch): #Subclassing.
-    game = "Wario's Woods"
-    patch_file_ending = ".wwnes" #Overriding Superclass.
-    result_file_ending = ".nes" #Overriding Superclass.
+class SpyroSeasonOfIcePatch(APProcedurePatch): #Subclassing.
+    game = "Spyro Season of Ice"
+    patch_file_ending = ".ssoi" #Overriding Superclass.
+    result_file_ending = ".gba" #Overriding Superclass.
     procedure = [("copy_rom", [])] #Overriding Superclass. This specifies the function of the thing that'll happen to the player's vanilla dump contents.
     
-    hash = "6f265e6433ba432e033eb397b11abf3f759178742dc644fd21e6ac29d1f8b3a6" #The SHA-256 hash that the player's vanilla dump should equate to.
+    hash = "a9768fa99ae74034ab19a45b30004306f1deff89" #The SHA-256 hash that the player's vanilla dump should equate to.
 
     @classmethod
     def get_source_data(cls):
         storage = Utils.persistent_load() #Local storage so I don't have to pass args through 50 functions.
-        rom_path = storage.get("WariosWoods", {}).get("rom_path") #Fetch the player's dump's path from storage.
+        rom_path = storage.get("SSoI", {}).get("rom_path") #Fetch the player's dump's path from storage.
        
         if not rom_path or not os.path.exists(rom_path): #If the player hasn't selected the path before, or if the dump file isn't at that location anymore...
-            rom_path = open_filename("Select your Wario's Woods (NES) dump. Only gotta do it the first time.", (("NES Files", "*.nes"), ("All Files", "*"))) #...Make the player select their vanilla dump file.
-
+            rom_path = open_filename("Select your Spyro Season of Ice (GBA) dump. Only gotta do it the first time.", (("GBA Files", "*.gba"), ("All Files", "*"))) #...Make the player select their vanilla dump file.
+    
             if not rom_path: #If the player didn't select their dump, go no further.
                 raise Exception("No ROM selected.")
 
@@ -82,22 +82,22 @@ class WariosWoodsPatch(APProcedurePatch): #Subclassing.
         file_hash = hashlib.sha256(rom_data).hexdigest() #...Then hash those contents. Better than hashing the whole file, since the name could be different.
 
         if file_hash.lower() != cls.hash.lower(): #If the player's vanilla dump hash isn't the same string as my vanilla dump's hash...
-            Utils.persistent_store("WariosWoods", "rom_path", None) #...Then it's not the same game. Clear the path that's currently stored, and go no further.
-            raise Exception("The ROM you provided doesn't look like a vanilla Wario's Woods (NES) dump to me, dawg. SHA256 should come out as 6f265e6433ba432e033eb397b11abf3f759178742dc644fd21e6ac29d1f8b3a6. It's bad otherwise. Check your dump, then try again.")
+            Utils.persistent_store("SSoI", "rom_path", None) #...Then it's not the same game. Clear the path that's currently stored, and go no further.
+            raise Exception("The ROM you provided doesn't look like a vanilla Spyro Season of Ice (GBA) dump to me, dawg. SHA256 should come out as a9768fa99ae74034ab19a45b30004306f1deff89. It's bad otherwise. Check your dump, then try again.")
             
-        Utils.persistent_store("WariosWoods", "rom_path", rom_path) #If everything else passed, we're gucci. Store that path so the player won't have to re-select it next time.
+        Utils.persistent_store("SSoI", "rom_path", rom_path) #If everything else passed, we're gucci. Store that path so the player won't have to re-select it next time.
         
         return rom_data #Pass the vanilla dump's contents to the caller.
 
 
-class WariosWoodsPatchExtension(APPatchExtension): #Subclassing.
-    game = "Wario's Woods" #Overriding Superclass.
+class SpyroSeasonOfIcePatchExtension(APPatchExtension): #Subclassing.
+    game = "Spyro Season of Ice" #Overriding Superclass.
 
     @staticmethod
     def copy_rom(caller, rom): #Overriding Superclass. This function contains the stuff that'll happen to the player's vanilla dump contents, since it's the procedure specified earlier.
         
         rom = bytearray(rom) #Convert the dump contents to a bytearray so I can easily parse the exact addresses I need to poke.
-        rom[0x0B] = 0x01 #Changing unused header byte so emulator won't recognize the game & therefore won't overwrite vanilla save data.
+        #Actually I don't need this for this game. rom[0x0B] = 0x01 #Changing unused header byte so emulator won't recognize the game & therefore won't overwrite vanilla save data.
         
         seed = caller.get_file("seed.txt") #Get the multiworld's seed. I've injected it into the patchfile so it's easy to retrieve here.
         return bytes(rom) + seed #Adding the multiworld's seed to the end of the file on disk. Seems to be what the BizHawk Client expects, but I'm not using that, so just keeping this in the event that it's best practice.
@@ -587,9 +587,9 @@ class ManualWorld(World): #Not gonna rename the world Subclass, in case it would
     #ManualWorld doesn't patch the game, so we're hijacking the generate_output function.
     def generate_output(self, output_directory: str): #This is the stuff that'll show up in the multiworld's zip file.
         player_name = self.multiworld.player_name[self.player] #Slot name.
-        patch = WariosWoodsPatch(player = self.player, player_name = player_name) #Run all the code in the class that patches the player's vanilla dump into an AP romhack, creating the patchfile.
+        patch  SpyroSeasonOfIcePatch(player = self.player, player_name = player_name) #Run all the code in the class that patches the player's vanilla dump into an AP romhack, creating the patchfile.
         patch.write_file("seed.txt", self.multiworld.seed_name.encode("utf-8")) #Tuck the multiworld's seed name in the patchfile, too.
-        patch.write(os.path.join(output_directory, f"{player_name}_AP_{self.multiworld.seed_name}.wwnes")) #Manifest the patch into the patchfile, and name it slotname_AP_multiworldseed.apgamefiletype.
+        patch.write(os.path.join(output_directory, f"{player_name}_AP_{self.multiworld.seed_name}.ssoi")) #Manifest the patch into the patchfile, and name it slotname_AP_multiworldseed.apgamefiletype.
         #As an aside, the webhost apparently throws a fit if you give it a multiworld zip to host, if the zip contains more than two files whose name starts with AP_multiworldseed.
         #I don't know how to and wasn't able to learn how to make the webhost distribute the patchfile. I'd sure like to. Hit me up.
 
@@ -602,8 +602,8 @@ class ManualWorld(World): #Not gonna rename the world Subclass, in case it would
 
 #I don't want to use the ManualClient so we're gonna do our own thing. Ooo-ooo aah-aah!
 def run_client(*args: str):
-    from .WariosWoodsArchipelagoClient import main #Get all the code from the client.
-    launch(main, name = "WWNESClient", args = args) #Run the client. Well, that'll happen when the Archipelago Launcher launches the patchfile.
+    from .SpyroSeasonOfIceArchipelagoClient import main #Get all the code from the client.
+    launch(main, name = "SSoIClient", args = args) #Run the client. Well, that'll happen when the Archipelago Launcher launches the patchfile.
 
 
 #Add the client to the list of clients when using the ArchipelagoLauncher.exe.
@@ -611,12 +611,13 @@ def run_client(*args: str):
 #I need an instructions sheet, not a contact that doesn't have the time to instruct me. This stuff isn't so variable that there can't be a reliably functional standard to post online in plaintext.
 components.append(
     Component(
-        "Wario's Woods Client", #Tells the AP Launcher what the list item should say. You know. The one with the Open button.
+        "Spyro Season of Ice Client", #Tells the AP Launcher what the list item should say. You know. The one with the Open button.
         func = run_client, #Tells the AP Launcher what the Open button should do.
         component_type = Type.CLIENT, #Tells the AP Launcher what category to put the list item into.
-        file_identifier = SuffixIdentifier(".wwnes") #Tells the AP Launcher, "Hey, if the user executes the AP Launcher using this filetype, hit the Open button for this specific component."
+        file_identifier = SuffixIdentifier(".ssoi") #Tells the AP Launcher, "Hey, if the user executes the AP Launcher using this filetype, hit the Open button for this specific component."
     )
 )
 #Actually I don't need it because I've solved the puzzle for how to open everything by double-clicking the patchfile. It's all handled in the game's client.
 #...Actually I need it because the archipelago launcher can't open jack squat without a component that provides the name. 
 #Don't try to open the game client directly please. I don't remember explicitly writing handling for that.
+#Update: I wrote handling for that.
