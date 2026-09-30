@@ -157,7 +157,7 @@ bit 1 - Fiona - Winter Fairy Home 104 80 4 - Explorer
 bit 2 - Christy - Winter Fairy Home 228 118 2 - Explorer
 bit 4 - Sung - Winter Fairy Home 250 -20 4 - Explorer
 bit 8 - Britney - Winter Fairy Home 208 52 4 - Explorer
-bit 16 - Cindy - Winter Fairy Home 278 74 1 - Space Heater
+bit 32 - Cindy - Winter Fairy Home 278 74 1 - Space Heater
 ]] IWRAM_WINTERFAIRYHOME_FAIRIES = 0x11E0
 --[[
 0x1200
@@ -201,8 +201,8 @@ bit 1 - Merriweather - Spring Fairy Home 200 -54 10 - Explorer
 bit 2 - Judy - Spring Fairy Home 274 4 6 - Explorer
 bit 4 - Heidi - Spring Fairy Home 250 116 2 - Explorer
 bit 8 - Tessa - Spring Fairy Home 124 -6 9 - Explorer
-bit 16 - Cassie - Spring Fairy Home 238 130 2 - Gardener
-]] IWRAM_SPRINGFAIRYHOME_FAIRIES = 
+bit 32 - Cassie - Spring Fairy Home 238 130 2 - Gardener
+]] IWRAM_SPRINGFAIRYHOME_FAIRIES = 0x12A0
 --[[
 0x12C0
 bit 1 - Gladys - Time Machine Lab 184 -88 0 - Sporker
@@ -417,7 +417,7 @@ MONITORS = {
 		client_value = 0
     },
     {
-        name = "Progressive Market Mesa Home Fairy",
+        name = "Progressive Market Mesa Fairy",
         read_mem = function()	
 			local ok, v = pcall(memory.readbyte, IWRAM_MARKETMESA_FAIRYATLAS, "IWRAM")
 			if ok then return v end
@@ -1762,14 +1762,14 @@ MONITORS = {
         name = "Cindy",
         read_mem = function()	
 			local ok, v = pcall(memory.readbyte, IWRAM_WINTERFAIRYHOME_FAIRIES, "IWRAM")
-			if ok then return bit16bool(v) end
+			if ok then return bit32bool(v) end
 			return nil
 		end,
         disengage_bit = function()
 			local ok, v = pcall(memory.readbyte, IWRAM_WINTERFAIRYHOME_FAIRIES, "IWRAM")
 			if ok then 
-				if bit16bool(v) == 1 then
-					local ok2 = pcall(memory.writebyte, IWRAM_WINTERFAIRYHOME_FAIRIES, v - 16, "IWRAM")
+				if bit32bool(v) == 1 then
+					local ok2 = pcall(memory.writebyte, IWRAM_WINTERFAIRYHOME_FAIRIES, v - 32, "IWRAM")
 					if ok2 then return true end
 				end
 			end
@@ -1778,8 +1778,8 @@ MONITORS = {
         engage_bit = function()
 			local ok, v = pcall(memory.readbyte, IWRAM_WINTERFAIRYHOME_FAIRIES, "IWRAM")
 			if ok then 
-				if bit16bool(v) == 0 then
-					local ok2 = pcall(memory.writebyte, IWRAM_WINTERFAIRYHOME_FAIRIES, v + 16, "IWRAM")
+				if bit32bool(v) == 0 then
+					local ok2 = pcall(memory.writebyte, IWRAM_WINTERFAIRYHOME_FAIRIES, v + 32, "IWRAM")
 					if ok2 then return true end
 				end
 			end
@@ -2646,14 +2646,14 @@ MONITORS = {
         name = "Cassie",
         read_mem = function()	
 			local ok, v = pcall(memory.readbyte, IWRAM_SPRINGFAIRYHOME_FAIRIES, "IWRAM")
-			if ok then return bit16bool(v) end
+			if ok then return bit32bool(v) end
 			return nil
 		end,
         disengage_bit = function()
 			local ok, v = pcall(memory.readbyte, IWRAM_SPRINGFAIRYHOME_FAIRIES, "IWRAM")
 			if ok then 
-				if bit16bool(v) == 1 then
-					local ok2 = pcall(memory.writebyte, IWRAM_SPRINGFAIRYHOME_FAIRIES, v - 16, "IWRAM")
+				if bit32bool(v) == 1 then
+					local ok2 = pcall(memory.writebyte, IWRAM_SPRINGFAIRYHOME_FAIRIES, v - 32, "IWRAM")
 					if ok2 then return true end
 				end
 			end
@@ -2662,8 +2662,8 @@ MONITORS = {
         engage_bit = function()
 			local ok, v = pcall(memory.readbyte, IWRAM_SPRINGFAIRYHOME_FAIRIES, "IWRAM")
 			if ok then 
-				if bit16bool(v) == 0 then
-					local ok2 = pcall(memory.writebyte, IWRAM_SPRINGFAIRYHOME_FAIRIES, v + 16, "IWRAM")
+				if bit32bool(v) == 0 then
+					local ok2 = pcall(memory.writebyte, IWRAM_SPRINGFAIRYHOME_FAIRIES, v + 32, "IWRAM")
 					if ok2 then return true end
 				end
 			end
@@ -4707,6 +4707,11 @@ function update()
 		if mon.name == "Zoe" then --Goal detection.				
 			if mon.read_mem() == 1 then
 				mon.send_location = 1
+				for _, mon2 in ipairs(MONITORS) do
+					if mon2.name == "Progressive Grendor's Lair Fairy" then
+						mon2.client_value = 5 --Make sure the game recognizes that the player has 100 fairies...in case they want to play Dragonfly X.
+					end
+				end
 			end
 		end
 		
@@ -6001,13 +6006,16 @@ request_handlers = {
 
 
 		for _, mon in ipairs(MONITORS) do
+		
+		
 			--Handle writing location_sent values.
 			if mon.name .. "_location" == req_item then
 				mon.location_sent = 1
-			
+				mon.engage_bit()
 		
 			--Handle writing progressives.
-			elseif mon.name == req_item then --If Grabrielle == Grabrielle...
+			elseif mon.name == req_item then --If Gabrielle == Gabrielle...
+				print(mon.name)
 				--Extract the value from the table array index.
 				local target_val = 0
 				if type(bytes_to_write) == "table" then
@@ -6016,12 +6024,12 @@ request_handlers = {
 					target_val = string.byte(bytes_to_write, 1) or 0
 				end
 
-				for _, mon in ipairs(MONITORS) do
-					mon.client_value = target_val
-					mon.write_mem(target_val)
-					break
-				end
-			end	
+				mon.client_value = target_val
+				mon.write_mem(target_val)
+				break
+					
+			end
+			
 		end
 
 		
@@ -6165,7 +6173,7 @@ function main ()
 					--print("there's items in checked_items")
                     for _, item_name in ipairs(checked_items) do
 				        for _, mon in ipairs(MONITORS) do
-							if item_name == mon.name then --If Grabrielle (check to send) == Gabrielle (the monitor)...
+							if item_name == mon.name then --If Gabrielle (check to send) == Gabrielle (the monitor)...
 							
 								if DEBUG == true then print("[LUA]: " .. mon.name .. " collected!") end
 								

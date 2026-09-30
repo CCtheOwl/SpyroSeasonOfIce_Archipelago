@@ -65,7 +65,7 @@ class SSoIContext(CommonContext):
         self.ProgressiveStarParkFairy              = 1
         self.ProgressiveSpaceAgeSpeedwayFairy      = 1
         self.ProgressiveBeetleBurrowsFairy         = 1
-        self.ProgressiveGrendorsLairFairy          = 1
+        #self.ProgressiveGrendorsLairFairy          = 1 #Taking this one out. It, uh...If you get sent this fairy before you make it to Spring Fairy Home, the game skips the 1st Grendor fight, and you never get the fairy. So now nobody gets it.
         
         
         self.data_package_ready = asyncio.Event() #A boolean that'll force an await from another function.
@@ -99,7 +99,7 @@ class SSoIContext(CommonContext):
                 return path #...Use that, then.
 
         #Well, if we made it here, then the path was invalid, or didn't exist.
-        path = Utils.open_filename("Select EmuHawk.exe PLEASE PLEASE PLEASE SELECT IT NOWWWWW", filetypes=[("EmuHawk", "*.exe")]) #Select the emulator.
+        path = Utils.open_filename("Select EmuHawk.exe PLEASE PLEASE PLEASE SELECT IT NOWWWWW", [("EmuHawk", ("EmuHawk.exe",))]) #Select the emulator.
         
         if not path: 
             raise RuntimeError("EmuHawk executable not selected.") #SELECT. THE. EMULATOR.
@@ -118,7 +118,7 @@ class SSoIContext(CommonContext):
             return path #Use it.
 
         #Well, if we made it here, then the path was invalid, or didn't exist.                                              
-        path = Utils.open_filename("Select Patched Spyro Season of Ice (GBA) ROM. Don't have one yet? Use Open Patch instead of the game's client.", filetypes=[("GBA Files", "*.gba"), ("All files", "*.*")]) #Select your dump.
+        path = Utils.open_filename("Select Patched Spyro Season of Ice (GBA) ROM. Don't have one yet? Use Open Patch instead of the game's client.", (("GBA Files", (".gba",)), ("All files", ("*",)))) #Select your dump.
         if not path:
             raise RuntimeError("ROM not selected.") #Fine, don't. Whatever.
 
@@ -161,7 +161,6 @@ class SSoIContext(CommonContext):
 
         version = response.decode().strip() #The letter just has a bunch of numbers in it what is this junk?? zzzzzzzzzzzz
         
-        #print(f"WWNES Lua version: {version}") #Nobody needs that psh
  
     '''Not implemented Lua-side yet. Not really on my priority list. Fancy way of saying I tried and got tired of testing it too quickly. I'll implement this if somebody shoots me a working solution for both client and lua side.
     Otherwise, the player will just have to close everything and re-open the patchfile if their client disconnects from the lua.
@@ -218,19 +217,22 @@ class SSoIContext(CommonContext):
             decoded = line.decode().strip() #Ooo what's in our goodiebag? 
             if decoded in ("", "1", "[]"): #Empty...?
                 continue #...Sometimes it's nothing and that's okay.
-
+                
             data = json.loads(decoded) #NOT EMPTY NOT EMPTY AAAUUAUHGHGGHGH so good.
             location_name_to_id = self.lua_location_name_to_id() #Run that cool function I wrote. Actually I think the Superclass has one of these after all. Oh well.
             location_ids = [] #Instantiate a PHAT array.
 
             for item in data: #For every location Lua wants to send to the APServer...
+                
                 #Goal handling.
                 if item.get("type") == "VICTORY": #Is it the winner?
                     await self.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}]) #Tell the APServer that we won!!
                     continue
-                #Location handling.                                   
-                if item.get("type") in location_name_to_id: #Which location is it, man?
-                    location_ids.append(location_name_to_id[item["type"]]) #...Ah, it's this one. Convert it to an ID so the APServer will recognize it for what it truly is.
+                    
+                #Location handling.
+                for location_name, location_id in location_name_to_id.items(): #Iterating through the dict so I can do string manipulation on the location names.
+                    if item.get("type") == location_name.split("-", 1)[0].rstrip(): #Which location is it, man? Also trying to save myself from having to do more copy+pasting...Get just the fairy name from the location name that looks like "Gabrielle - Autumn Fairy Home 123 123 123 - Explorer".
+                        location_ids.append(location_id) #...Ah, it's this one. Convert it to an ID so the APServer will recognize it for what it truly is.
                     
             if location_ids: #If we got locations to send to the APServer...
                 await self.check_locations(location_ids) #...Send'em. Use the Superclass's function to do it.
@@ -278,7 +280,7 @@ class SSoIContext(CommonContext):
             self.ProgressiveStarParkFairy              = 1
             self.ProgressiveSpaceAgeSpeedwayFairy      = 1
             self.ProgressiveBeetleBurrowsFairy         = 1
-            self.ProgressiveGrendorsLairFairy          = 1
+            #self.ProgressiveGrendorsLairFairy          = 1
             
             self.location_reminder = 0
             asyncio.create_task(self._connected()) #We need an async function that asks the APServer for all the locations we've sent and all the items we've received.
@@ -329,7 +331,7 @@ class SSoIContext(CommonContext):
         trigger_ProgressiveStarParkFairy              = 0
         trigger_ProgressiveSpaceAgeSpeedwayFairy      = 0
         trigger_ProgressiveBeetleBurrowsFairy         = 0
-        trigger_ProgressiveGrendorsLairFairy          = 0
+        #trigger_ProgressiveGrendorsLairFairy          = 0
         
         
 
@@ -405,9 +407,9 @@ class SSoIContext(CommonContext):
             elif item_name == "Progressive Beetle Burrows Fairy":
                 self.ProgressiveBeetleBurrowsFairy         += 2
                 trigger_ProgressiveBeetleBurrowsFairy         = 1
-            elif item_name == "Progressive Grendor's Lair Fairy":
-                self.ProgressiveGrendorsLairFairy          += 2
-                trigger_ProgressiveGrendorsLairFairy          = 1
+            #elif item_name == "Progressive Grendor's Lair Fairy":
+                #self.ProgressiveGrendorsLairFairy          += 2
+                #trigger_ProgressiveGrendorsLairFairy          = 1
 
 
         if trigger_ProgressiveAutumnFairyHomeFairy == 1 and self.ProgressiveAutumnFairyHomeFairy > 1: #If we sounded the alarm AND WE DIDN'T LITERALLY JUST START PLAYING THE GAME...
@@ -548,11 +550,11 @@ class SSoIContext(CommonContext):
                 {"type": "DISPLAY_MESSAGE", "message": "Received Beetle Burrows Fairy!"}
             ])
 
-        if trigger_ProgressiveGrendorsLairFairy == 1 and self.ProgressiveGrendorsLairFairy > 1:
-            await self.send_lua_object([
-                {"type": "WRITE", "item_name": "Progressive Grendor's Lair Fairy", "value": base64.b64encode(bytes([self.ProgressiveGrendorsLairFairy])).decode("utf-8")},
-                {"type": "DISPLAY_MESSAGE", "message": "Received Grendor's Lair Fairy!"}
-            ])
+        #if trigger_ProgressiveGrendorsLairFairy == 1 and self.ProgressiveGrendorsLairFairy > 1:
+            #await self.send_lua_object([
+                #{"type": "WRITE", "item_name": "Progressive Grendor's Lair Fairy", "value": base64.b64encode(bytes([self.ProgressiveGrendorsLairFairy])).decode("utf-8")},
+                #{"type": "DISPLAY_MESSAGE", "message": "Received Grendor's Lair Fairy!"}
+            #])
 
         if self.location_reminder == 0: #Here's where we remind Lua which locations we've already sent, after Client finds out from the APServer.
             self.location_reminder = 1 #And don't remind Lua again. It'll remember.
@@ -604,7 +606,7 @@ def main(*launch_args): #Most important part. Whole Client runs from here.
     args = parser.parse_args(launch_args) #Yep, add it in. Just like that.
 
     async def _main(): #Main main in my main in an estimate.
-        opened_thru_patchfile = 0 #Used to tell if the player opened Client via the patchfile/Open Patch (gets set to 1 in _main), or via the Wario's Woods Client (stays as 0).
+        opened_thru_patchfile = 0 #Used to tell if the player opened Client via the patchfile/Open Patch (gets set to 1 in _main), or via the client (stays as 0).
         
         if args.diff_file: #If we got hit wid dat snazzy option we added...
             _, romfile = Patch.create_rom_file(args.diff_file) #...Patch the player's vanilla dump file using the patchfile.

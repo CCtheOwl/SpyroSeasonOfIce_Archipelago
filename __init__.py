@@ -63,7 +63,7 @@ class SpyroSeasonOfIcePatch(APProcedurePatch): #Subclassing.
     result_file_ending = ".gba" #Overriding Superclass.
     procedure = [("copy_rom", [])] #Overriding Superclass. This specifies the function of the thing that'll happen to the player's vanilla dump contents.
     
-    hash = "a9768fa99ae74034ab19a45b30004306f1deff89" #The SHA-256 hash that the player's vanilla dump should equate to.
+    hash = "d331abe19e3f02e2855aa4bbc2de14626810aca83e0c216862eb1d8ca8d024b0" #The SHA-256 hash that the player's vanilla dump should equate to.
 
     @classmethod
     def get_source_data(cls):
@@ -71,7 +71,7 @@ class SpyroSeasonOfIcePatch(APProcedurePatch): #Subclassing.
         rom_path = storage.get("SSoI", {}).get("rom_path") #Fetch the player's dump's path from storage.
        
         if not rom_path or not os.path.exists(rom_path): #If the player hasn't selected the path before, or if the dump file isn't at that location anymore...
-            rom_path = open_filename("Select your Spyro Season of Ice (GBA) dump. Only gotta do it the first time.", (("GBA Files", "*.gba"), ("All Files", "*"))) #...Make the player select their vanilla dump file.
+            rom_path = open_filename("Select your Spyro Season of Ice (GBA) dump. Only gotta do it the first time.", (("GBA Files", (".gba",)), ("All files", ("*",)))) #...Make the player select their vanilla dump file.
     
             if not rom_path: #If the player didn't select their dump, go no further.
                 raise Exception("No ROM selected.")
@@ -83,7 +83,7 @@ class SpyroSeasonOfIcePatch(APProcedurePatch): #Subclassing.
 
         if file_hash.lower() != cls.hash.lower(): #If the player's vanilla dump hash isn't the same string as my vanilla dump's hash...
             Utils.persistent_store("SSoI", "rom_path", None) #...Then it's not the same game. Clear the path that's currently stored, and go no further.
-            raise Exception("The ROM you provided doesn't look like a vanilla Spyro Season of Ice (GBA) dump to me, dawg. SHA256 should come out as a9768fa99ae74034ab19a45b30004306f1deff89. It's bad otherwise. Check your dump, then try again.")
+            raise Exception("The ROM you provided doesn't look like a vanilla Spyro Season of Ice (GBA) dump to me, dawg. SHA256 should come out as d331abe19e3f02e2855aa4bbc2de14626810aca83e0c216862eb1d8ca8d024b0. It's bad otherwise. Check your dump, then try again.")
             
         Utils.persistent_store("SSoI", "rom_path", rom_path) #If everything else passed, we're gucci. Store that path so the player won't have to re-select it next time.
         
@@ -587,7 +587,7 @@ class ManualWorld(World): #Not gonna rename the world Subclass, in case it would
     #ManualWorld doesn't patch the game, so we're hijacking the generate_output function.
     def generate_output(self, output_directory: str): #This is the stuff that'll show up in the multiworld's zip file.
         player_name = self.multiworld.player_name[self.player] #Slot name.
-        patch  SpyroSeasonOfIcePatch(player = self.player, player_name = player_name) #Run all the code in the class that patches the player's vanilla dump into an AP romhack, creating the patchfile.
+        patch = SpyroSeasonOfIcePatch(player = self.player, player_name = player_name) #Run all the code in the class that patches the player's vanilla dump into an AP romhack, creating the patchfile.
         patch.write_file("seed.txt", self.multiworld.seed_name.encode("utf-8")) #Tuck the multiworld's seed name in the patchfile, too.
         patch.write(os.path.join(output_directory, f"{player_name}_AP_{self.multiworld.seed_name}.ssoi")) #Manifest the patch into the patchfile, and name it slotname_AP_multiworldseed.apgamefiletype.
         #As an aside, the webhost apparently throws a fit if you give it a multiworld zip to host, if the zip contains more than two files whose name starts with AP_multiworldseed.
